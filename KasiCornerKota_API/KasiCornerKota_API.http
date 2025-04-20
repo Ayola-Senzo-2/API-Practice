@@ -1,8 +1,24 @@
 @host = https://localhost
 @port = 7272
-@KasiCornerKota_API_HostAddress = {{host}}:{{port}}
+@KasiCornerKota_API_HostAddress = https://localhost:7272
 
-GET {{KasiCornerKota_API_HostAddress}}/api/weatherforecast/example
+GET {{KasiCornerKota_API_HostAddress}}/api/weatherforecast/22/example?max=18
 Accept: application/json
+ProjectUrl: {{$projectUrl}}
+Guid: {{$guid}}
+LocalDate: {{$datetime iso8601}}
+
+###
+GET {{KasiCornerKota_API_HostAddress}}/api/weatherforecast/currentDay
+Accept: application/json
+ProjectUrl: {{$projectUrl}}
+Guid: {{$guid}}
+LocalDate: {{$datetime iso8601}}
+###
+
+POST {{KasiCornerKota_API_HostAddress}}/api/weatherforecast
+Content-Type: application/json
+
+"Senzo"
 
 ###
