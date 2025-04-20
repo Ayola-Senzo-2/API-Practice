@@ -3,15 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KasiCornerKota_Infrastructure.Persistence;
 
-internal class KasiKotaDbContext : DbContext
+internal class KasiKotaDbContext(DbContextOptions<KasiKotaDbContext> options) : DbContext(options)
 {
     public DbSet<Restaurant> Restaurants { get; set; }
     public DbSet<Dish> Dishes { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=KasiKotaDb;Trusted_Connection=True;");
-    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
