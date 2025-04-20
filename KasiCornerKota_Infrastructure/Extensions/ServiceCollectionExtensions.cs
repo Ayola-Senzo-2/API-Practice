@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using KasiCornerKota_Infrastructure.Persistence;
+using KasiCornerKota_Infrastructure.Seeder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KasiCornerKota_Infrastructure.Persistence.Extensions
+namespace KasiCornerKota_Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {
@@ -10,6 +12,8 @@ namespace KasiCornerKota_Infrastructure.Persistence.Extensions
         {
             var ConnectionString = configuration.GetConnectionString("KasiCornerKota");
             services.AddDbContext<KasiKotaDbContext>(options => options.UseSqlServer(ConnectionString));
+
+            services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();
         }
     }
 }
