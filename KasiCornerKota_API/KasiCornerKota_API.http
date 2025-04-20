@@ -1,0 +1,8 @@
+@host = https://localhost
+@port = 7272
+@KasiCornerKota_API_HostAddress = {{host}}:{{port}}
+
+GET {{KasiCornerKota_API_HostAddress}}/api/weatherforecast/example
+Accept: application/json
+
+###
