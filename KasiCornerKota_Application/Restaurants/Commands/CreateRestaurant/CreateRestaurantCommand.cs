@@ -1,8 +1,10 @@
 ﻿
 
-namespace KasiCornerKota_Application.Restaurants.Dtos
+using MediatR;
+
+namespace KasiCornerKota_Application.Restaurants.Commands.CreateRestaurant
 {
-    public class CreateRestaurantDto
+    public class CreateRestaurantCommand : IRequest<int>
     {
         public string Name { get; set; } = string.Empty;
         public string? Description { get; set; }

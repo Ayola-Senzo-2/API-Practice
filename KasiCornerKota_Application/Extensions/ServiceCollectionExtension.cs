@@ -1,4 +1,6 @@
-﻿using KasiCornerKota_Application.Restaurants;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using KasiCornerKota_Application.Restaurants;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KasiCornerKota_Application.Extensions
@@ -7,9 +9,11 @@ namespace KasiCornerKota_Application.Extensions
     {
         public static void AddApplication(this IServiceCollection services)
         {
-
-            services.AddScoped<IRestaurantsService, RestaurantsService>();
-            services.AddAutoMapper(typeof(ServiceCollectionExtension).Assembly);
+            var ApplicationAssembly = typeof(ServiceCollectionExtension).Assembly;
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(ApplicationAssembly));
+            services.AddAutoMapper(ApplicationAssembly);
+            services.AddValidatorsFromAssembly(ApplicationAssembly)
+                .AddFluentValidationAutoValidation();
 
         }
     }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using KasiCornerKota_Application.Restaurants.Commands.CreateRestaurant;
 using KasiCornerKota_Domain.Entities;
 
 namespace KasiCornerKota_Application.Restaurants.Dtos
@@ -13,7 +14,7 @@ namespace KasiCornerKota_Application.Restaurants.Dtos
                 .ForMember(d => d.Street, opt => opt.MapFrom(src => src.Address == null ? null : src.Address.Street))
                 .ForMember(d => d.dishes, opt => opt.MapFrom(src => src.dishes));
 
-            CreateMap<CreateRestaurantDto, Restaurant>()
+            CreateMap<CreateRestaurantCommand, Restaurant>()
                 .ForMember(d => d.Address, opt => opt.MapFrom(
                     src => new Address
                     {

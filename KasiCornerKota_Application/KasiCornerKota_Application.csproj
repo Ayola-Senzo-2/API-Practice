@@ -8,12 +8,18 @@
 
   <ItemGroup>
 	<PackageReference Include="AutoMapper" Version="14.0.0" />
+	<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+	<PackageReference Include="MediatR" Version="12.5.0" />
 	<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.4" />
 	<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\KasiCornerKota_Domain\KasiCornerKota_Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Restaurants\Validators\" />
   </ItemGroup>
 
 </Project>
