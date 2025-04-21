@@ -9,7 +9,8 @@ namespace KasiCornerKota_Application.Extensions
         {
 
             services.AddScoped<IRestaurantsService, RestaurantsService>();
-            
+            services.AddAutoMapper(typeof(ServiceCollectionExtension).Assembly);
+
         }
     }
 }

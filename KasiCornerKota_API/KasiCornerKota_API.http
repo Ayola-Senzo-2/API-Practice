@@ -10,7 +10,7 @@ GET {{KasiCornerKota_API_HostAddress}}/api/restaurants
 
 ###
 
-@id=1
+@id=2
 GET {{KasiCornerKota_API_HostAddress}}/api/restaurants/{{id}}
 
 ###
