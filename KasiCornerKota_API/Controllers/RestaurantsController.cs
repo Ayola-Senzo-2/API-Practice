@@ -1,4 +1,5 @@
 ﻿using KasiCornerKota_Application.Restaurants;
+using KasiCornerKota_Application.Restaurants.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KasiCornerKota_API.Controllers;
@@ -21,5 +22,12 @@ public class RestaurantsController(IRestaurantsService restaurantsService) : Con
             return NotFound($"Restaurant with ID {id} not found");
 
         return Ok(restaurant);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] CreateRestaurantDto dto)
+    {
+        int id = await restaurantsService.AddNewRestaurant(dto);
+        return CreatedAtAction(nameof(GetById),new { id}, null);
     }
 }

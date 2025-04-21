@@ -14,3 +14,20 @@ GET {{KasiCornerKota_API_HostAddress}}/api/restaurants
 GET {{KasiCornerKota_API_HostAddress}}/api/restaurants/{{id}}
 
 ###
+
+POST {{KasiCornerKota_API_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+  "Name":"Kota & Chill",
+  "Description": "Phuthu, Mogodu, Bacon, Russian & Vianna",
+  "Category": "Fast Food",
+  "HasDelivery" : true,
+  "ContactEmail" : "kornerkota@kasi.co.za",
+  "PhoneNumber": "078-525-3201",
+  "City" : "JHB",
+  "Street" : "84 Fox Street Marshalltown",
+  "PostalCode" : "2001"
+}
+
+###

@@ -21,5 +21,11 @@ namespace KasiCornerKota_Infrastructure.Repositories
                 .FirstOrDefaultAsync(r => r.Id == id);
             return restaurant;
         }
+        public async Task<int> AddByAsync(Restaurant entity)
+        {
+            KotaDbContext.Restaurants.Add(entity);
+            await KotaDbContext.SaveChangesAsync();
+            return entity.Id;
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace KasiCornerKota_Application.Restaurants
     {
         Task<IEnumerable<RestaurantDto>> GetAllRestaurants();
         Task<RestaurantDto?> GetById(int id);
+        Task<int> AddNewRestaurant(CreateRestaurantDto dto);
     }
 
     internal class RestaurantsService(IRestaurantsRepository restaurantsRepository,
@@ -32,6 +33,14 @@ namespace KasiCornerKota_Application.Restaurants
 
             var restaurantDto = restaurant == null ? null : mapper.Map<RestaurantDto?>(restaurant);
             return restaurantDto;
+        }
+        public async Task<int> AddNewRestaurant(CreateRestaurantDto dto)
+        {
+            logger.LogInformation("Creating a new Restaurant");
+            var restaurant = mapper.Map<Restaurant>(dto);
+            int id = await restaurantsRepository.AddByAsync(restaurant);
+            
+            return id;
         }
     }
 }
