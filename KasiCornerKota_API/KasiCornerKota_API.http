@@ -10,8 +10,8 @@ GET {{KasiCornerKota_API_HostAddress}}/api/restaurants
 
 ###
 
-@id=5
-GET {{KasiCornerKota_API_HostAddress}}/api/restaurants/{{id}}
+
+GET {{KasiCornerKota_API_HostAddress}}/api/restaurants/3
 
 ###
 
@@ -28,6 +28,21 @@ Content-Type: application/json
   "City" : "Tembisa",
   "Street" : "84 Enhlanzeni Hostel",
   "PostalCode" : "1632"
+}
+
+###
+@id=4
+DELETE {{KasiCornerKota_API_HostAddress}}/api/restaurants/{{id}}
+
+###
+
+PATCH {{KasiCornerKota_API_HostAddress}}/api/restaurants/35
+Content-Type: application/json
+
+{
+ "Name":"Kota Weekend Special",
+"Description": "Chips, Polony, Atchar, eggs, Russian & Vianna",
+"HasDelivery" : false
 }
 
 ###

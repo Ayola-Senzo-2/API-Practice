@@ -1,5 +1,7 @@
 ﻿using KasiCornerKota_Application.Restaurants;
 using KasiCornerKota_Application.Restaurants.Commands.CreateRestaurant;
+using KasiCornerKota_Application.Restaurants.Commands.DeleteRestaurant;
+using KasiCornerKota_Application.Restaurants.Commands.UpdateRestaurant;
 using KasiCornerKota_Application.Restaurants.Dtos;
 using KasiCornerKota_Application.Restaurants.Queries.GetAllRestaurants;
 using KasiCornerKota_Application.Restaurants.Queries.GetRestaurantById;
@@ -27,7 +29,27 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
 
         return Ok(restaurant);
     }
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> UpdateRestaurant([FromRoute] int id, UpdateRestaurantCommand command)
+    {
+        command.Id = id;
+        var isUpdated = await mediator.Send(command);
 
+        if (isUpdated)
+            return NoContent();
+
+        return NotFound();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteRestaurant([FromRoute]int id)
+    {
+        var isDeleted = await mediator.Send(new DeleteRestaurantCommand(id));
+        if (isDeleted)
+            return NoContent();
+
+        return NotFound();
+    }
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateRestaurantCommand command)
     {
