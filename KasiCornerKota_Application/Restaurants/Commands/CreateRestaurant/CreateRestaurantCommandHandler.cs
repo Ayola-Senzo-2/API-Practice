@@ -15,7 +15,7 @@ namespace KasiCornerKota_Application.Restaurants.Commands.CreateRestaurant
         {
             logger.LogInformation("Creating a new Restaurant");
             var restaurant = _mapper.Map<Restaurant>(request);
-            var id = await _restaurantsRepository.AddByAsync(restaurant);
+            int id = await _restaurantsRepository.AddByAsync(restaurant);
             return id;
         }
     }

@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
-using KasiCornerKota_Application.Restaurants;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KasiCornerKota_Application.Extensions

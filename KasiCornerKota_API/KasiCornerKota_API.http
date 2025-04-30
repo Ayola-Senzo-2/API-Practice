@@ -11,7 +11,7 @@ GET {{KasiCornerKota_API_HostAddress}}/api/restaurants
 ###
 
 
-GET {{KasiCornerKota_API_HostAddress}}/api/restaurants/3
+GET {{KasiCornerKota_API_HostAddress}}/api/restaurants/8
 
 ###
 
@@ -19,8 +19,8 @@ POST {{KasiCornerKota_API_HostAddress}}/api/restaurants
 Content-Type: application/json
 
 {
-  "Name":"Shisanyama",
-  "Description": "Phuthu, Pork, Wors, Liver & Beef",
+  "Name":"Shisanyama Busy Corner",
+  "Description": "Phuthu, Wors, Liver & Beef",
   "Category": "Fast Food",
   "HasDelivery" : true,
   "ContactEmail" : "kornerkota@kasi.co.za",
@@ -31,12 +31,12 @@ Content-Type: application/json
 }
 
 ###
-@id=4
+@id=7
 DELETE {{KasiCornerKota_API_HostAddress}}/api/restaurants/{{id}}
 
 ###
 
-PATCH {{KasiCornerKota_API_HostAddress}}/api/restaurants/35
+PATCH {{KasiCornerKota_API_HostAddress}}/api/restaurants/6
 Content-Type: application/json
 
 {
@@ -44,5 +44,28 @@ Content-Type: application/json
 "Description": "Chips, Polony, Atchar, eggs, Russian & Vianna",
 "HasDelivery" : false
 }
+
+###
+
+POST {{KasiCornerKota_API_HostAddress}}/api/restaurants/8/dishes
+Content-Type: application/json
+
+{
+  "Name": "Kota, Chips and Special",
+  "Description": "Fast food yase Kasi",
+  "Price": 12.99,
+  "Calories": 50
+}
+
+###
+
+@restaurantId=8
+@dishId=6
+GET {{KasiCornerKota_API_HostAddress}}/api/restaurants/{{restaurantId}}/dishes/{{dishId}}
+
+###
+
+@restaurantId=8
+DELETE {{KasiCornerKota_API_HostAddress}}/api/restaurants/{{restaurantId}}/dishes
 
 ###
