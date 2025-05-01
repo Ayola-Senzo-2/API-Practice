@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
+using KasiCornerKota_Application.Users;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KasiCornerKota_Application.Extensions
@@ -14,6 +15,8 @@ namespace KasiCornerKota_Application.Extensions
             services.AddValidatorsFromAssembly(ApplicationAssembly)
                 .AddFluentValidationAutoValidation();
 
+            services.AddScoped<IUserContext, UserContext>();
+            services.AddHttpContextAccessor();
         }
     }
 }

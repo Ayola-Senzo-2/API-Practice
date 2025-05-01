@@ -4,6 +4,7 @@ using KasiCornerKota_Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KasiCornerKota_Infrastructure.Migrations
 {
     [DbContext(typeof(KasiKotaDbContext))]
-    partial class KasiKotaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250501013734_AdditionalPropertiesOnUserTbl")]
+    partial class AdditionalPropertiesOnUserTbl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

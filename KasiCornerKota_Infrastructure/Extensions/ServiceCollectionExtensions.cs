@@ -1,4 +1,5 @@
-﻿using KasiCornerKota_Domain.Repositories;
+﻿using KasiCornerKota_Domain.Entities;
+using KasiCornerKota_Domain.Repositories;
 using KasiCornerKota_Infrastructure.Persistence;
 using KasiCornerKota_Infrastructure.Repositories;
 using KasiCornerKota_Infrastructure.Seeder;
@@ -16,6 +17,9 @@ namespace KasiCornerKota_Infrastructure.Extensions
             services.AddDbContext<KasiKotaDbContext>(options => options.UseSqlServer(connectionString)
                 .EnableSensitiveDataLogging());
 
+            services.AddIdentityApiEndpoints<User>()
+                .AddEntityFrameworkStores<KasiKotaDbContext>();
+          
             services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();
             services.AddScoped<IRestaurantsRepository, RestaurantsRepository>();
             services.AddScoped<IDishesRepository, DishesRepository>();

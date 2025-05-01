@@ -1,26 +1,18 @@
 using KasiCornerKota_API.Middleware;
 using KasiCornerKota_Application.Extensions;
+using KasiCornerKota_Domain.Entities;
 using KasiCornerKota_Infrastructure.Extensions;
 using KasiCornerKota_Infrastructure.Seeder;
-using Microsoft.AspNetCore.Builder;
 using Serilog;
-using Serilog.Events;
-using Serilog.Formatting.Compact;
+using KasiCornerKota_API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllers();
-builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<ErrorHandlingMiddle>();
-builder.Services.AddScoped<RequestTimeLoggingMiddleware>();
-
+builder.AddPresentation();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
-builder.Host.UseSerilog((context, configuration) =>
-    configuration.ReadFrom.Configuration(context.Configuration)
-);
+
 var app = builder.Build();
 
 var scope = app.Services.CreateScope();
@@ -42,6 +34,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapGroup("api/identity")
+    .WithTags("Identity")
+    .MapIdentityApi<User>();
 
 app.UseAuthorization();
 

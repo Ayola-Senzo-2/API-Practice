@@ -1,13 +1,13 @@
 @host = https://localhost
 @port = 7272
 @KasiCornerKota_API_HostAddress = https://localhost:7272
-
+@token = CfDJ8ODwGfDpVsZFrPxfC2bFSY0MSAjRrZTswKSmC5yhBgVjbqGS8BOsAeFma12pzgOu-kt1Gxc_EgN_WqX2vvHLUAGHzNeqaLBUakQscHleyEmM3AchjZU5v_9F70EPytYRoR6guXZwBEngAhSAyRtQF_QEZMUeYdf1oGbCXzFKjuVOi87PwHhT2DG0ilPdZLnWH4PXks3yiwvYLjcHlXKIL7vBcckERzLu9HwkbIX-9KXgRFfspIG0c7KPoxXNzwO6Ij3ovZQc2bGUQLEJFidseOkTkYXXEWHAdluGluYFiq-uzbA5-b_TEjBxcfq-_bjnstbhWfEvBD-7LobeZ7pJ8lJTrMcAUCGrPiOO53xTINvjFu2C11qsSF9jWMhdlxwyMHAnQqQHZY4v5JLb5DI5vntMIASH5_obsP7jqPMh0O_tLvlTdiUiLOVO6KBDnlFeEdrjv9sOewLhG3LPKlBqY6EbPdg4_x7IezcvYyu9EceIz9zZQ4cBr8ykYfmNy2xK6W42LepYRHmien_hZfMVsPG_fed122clSCvfI81CJ-oOTt-GTkkT6tZp_H0GXUpSs2aGoRgkr0ngzpZ7nINqO3fVXxrcV4N20qxbSqfgg7YxFiiitilb12nNaMG0r5Hee7qyI_S-cDm_8HvsW3E4Aro6rOu3NjqqOsY3gV8Idfl6qJ8bzYzEKNDJ5vEqTLEZLA
 ###
 
 ###
 
 GET {{KasiCornerKota_API_HostAddress}}/api/restaurants
-
+Authorization : Bearer {{token}}
 ###
 
 
@@ -67,5 +67,35 @@ GET {{KasiCornerKota_API_HostAddress}}/api/restaurants/{{restaurantId}}/dishes/{
 
 @restaurantId=8
 DELETE {{KasiCornerKota_API_HostAddress}}/api/restaurants/{{restaurantId}}/dishes
+
+###
+
+POST {{KasiCornerKota_API_HostAddress}}/api/identity/register
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "P@55word1"
+}
+
+###
+
+  
+POST {{KasiCornerKota_API_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "P@55word1"
+}
+
+###
+PATCH {{KasiCornerKota_API_HostAddress}}/api/identity/user
+Content-Type: application/json
+Authorization : Bearer {{token}}
+{
+  "dateOf": "test@test.com",
+  "password": "P@55word1"
+}
 
 ###

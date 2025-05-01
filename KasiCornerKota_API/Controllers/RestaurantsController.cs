@@ -1,11 +1,11 @@
-﻿using KasiCornerKota_Application.Restaurants;
-using KasiCornerKota_Application.Restaurants.Commands.CreateRestaurant;
+﻿using KasiCornerKota_Application.Restaurants.Commands.CreateRestaurant;
 using KasiCornerKota_Application.Restaurants.Commands.DeleteRestaurant;
 using KasiCornerKota_Application.Restaurants.Commands.UpdateRestaurant;
 using KasiCornerKota_Application.Restaurants.Dtos;
 using KasiCornerKota_Application.Restaurants.Queries.GetAllRestaurants;
 using KasiCornerKota_Application.Restaurants.Queries.GetRestaurantById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KasiCornerKota_API.Controllers;
@@ -14,6 +14,7 @@ namespace KasiCornerKota_API.Controllers;
 public class RestaurantsController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
+    [Authorize]
     public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll()
     {
         var restaurants = await mediator.Send(new GetAllRestaurantsQuery());
