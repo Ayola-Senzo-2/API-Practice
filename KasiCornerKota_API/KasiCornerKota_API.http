@@ -1,25 +1,24 @@
 @host = https://localhost
 @port = 7272
 @KasiCornerKota_API_HostAddress = https://localhost:7272
-@token = CfDJ8ODwGfDpVsZFrPxfC2bFSY0MSAjRrZTswKSmC5yhBgVjbqGS8BOsAeFma12pzgOu-kt1Gxc_EgN_WqX2vvHLUAGHzNeqaLBUakQscHleyEmM3AchjZU5v_9F70EPytYRoR6guXZwBEngAhSAyRtQF_QEZMUeYdf1oGbCXzFKjuVOi87PwHhT2DG0ilPdZLnWH4PXks3yiwvYLjcHlXKIL7vBcckERzLu9HwkbIX-9KXgRFfspIG0c7KPoxXNzwO6Ij3ovZQc2bGUQLEJFidseOkTkYXXEWHAdluGluYFiq-uzbA5-b_TEjBxcfq-_bjnstbhWfEvBD-7LobeZ7pJ8lJTrMcAUCGrPiOO53xTINvjFu2C11qsSF9jWMhdlxwyMHAnQqQHZY4v5JLb5DI5vntMIASH5_obsP7jqPMh0O_tLvlTdiUiLOVO6KBDnlFeEdrjv9sOewLhG3LPKlBqY6EbPdg4_x7IezcvYyu9EceIz9zZQ4cBr8ykYfmNy2xK6W42LepYRHmien_hZfMVsPG_fed122clSCvfI81CJ-oOTt-GTkkT6tZp_H0GXUpSs2aGoRgkr0ngzpZ7nINqO3fVXxrcV4N20qxbSqfgg7YxFiiitilb12nNaMG0r5Hee7qyI_S-cDm_8HvsW3E4Aro6rOu3NjqqOsY3gV8Idfl6qJ8bzYzEKNDJ5vEqTLEZLA
-###
-
-###
+@token = CfDJ8ODwGfDpVsZFrPxfC2bFSY2nRqFHp3m85pktrylgG53B1Pu9xv2dWYicTIocR20LA2RFyLQXMA7tNw3BQfGMb0729metNhCQ8PPa9yudv36RKfF4Igdo91Ucpv8d8slX2Ha3gCg3GaYcgDS8D5T2outLZDYa6AJbHRNQ04guzF2OcO3Y_BMGtvQWLKSIdbWNDgd5vTVcb3ph0Vkvo2JLhjI901Vr1559CPePKKXYZZwiXVSkWfJ3FrUx1jjvA8is8H7gReuFaXOkJ9ZOyg83x41-Syd9CJpVrocyLuN-qwxo0vtu9et1B0C6r13KnIkcbnetqcHMbE5iv1mjlAK89uXzvbS7rJ5dlN9Iv-Soewkdo4qPTnoX8f5y3Nyu_t15Xi1rc4FP1wkhghqURGcjWUGxirgapmb9vUFqp-RIEYBsWYvyw1WboxIuaSn-Ej_ajcwRjwC94aDAmFkH2y6depVo9MckjsW376POfK9OcmfE4eJKUg-SE2f1NvQteV16giGMvyeuIJqeyaT_VH8hfPuNCRtaSCtnzI65xI05p-zOeuA2iN0TqDNsztsyV4WXoSb6_eu_UvrmtpAVdr20TslU7YC0lLcA-_pRdetvci8O8wVqXRmUvMPSZ9QBQblEybx5E2qwST3d4RNu2u3f2tmwn7mZZuCm5b7FC77ACxrYn7xibE0c7R3YYopfCEOP2r2Y-9wFfCJuOQtq6r3NMNMadzUIRcmfwsVDDIQUibkHR5j6VCKws3c1M4Cs7u0k41sIjB3VI9Y8xd0GfzKXsnxvkmppD3sfWInAodHdlNHX
 
 GET {{KasiCornerKota_API_HostAddress}}/api/restaurants
 Authorization : Bearer {{token}}
 ###
 
 
-GET {{KasiCornerKota_API_HostAddress}}/api/restaurants/8
+GET {{KasiCornerKota_API_HostAddress}}/api/restaurants/10
+Authorization : Bearer {{token}}
 
 ###
 
 POST {{KasiCornerKota_API_HostAddress}}/api/restaurants
 Content-Type: application/json
+Authorization : Bearer {{token}}
 
 {
-  "Name":"Shisanyama Busy Corner",
+  "Name":"Owner Test2 Shisa2",
   "Description": "Phuthu, Wors, Liver & Beef",
   "Category": "Fast Food",
   "HasDelivery" : true,
@@ -31,16 +30,13 @@ Content-Type: application/json
 }
 
 ###
-@id=7
-DELETE {{KasiCornerKota_API_HostAddress}}/api/restaurants/{{id}}
 
-###
-
-PATCH {{KasiCornerKota_API_HostAddress}}/api/restaurants/6
+PATCH {{KasiCornerKota_API_HostAddress}}/api/restaurants/1003
 Content-Type: application/json
+Authorization : Bearer {{token}}
 
 {
- "Name":"Kota Weekend Special",
+ "Name":"Onwer Updated Special",
 "Description": "Chips, Polony, Atchar, eggs, Russian & Vianna",
 "HasDelivery" : false
 }
@@ -59,17 +55,6 @@ Content-Type: application/json
 
 ###
 
-@restaurantId=8
-@dishId=6
-GET {{KasiCornerKota_API_HostAddress}}/api/restaurants/{{restaurantId}}/dishes/{{dishId}}
-
-###
-
-@restaurantId=8
-DELETE {{KasiCornerKota_API_HostAddress}}/api/restaurants/{{restaurantId}}/dishes
-
-###
-
 POST {{KasiCornerKota_API_HostAddress}}/api/identity/register
 Content-Type: application/json
 
@@ -85,17 +70,41 @@ POST {{KasiCornerKota_API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
-  "email": "test@test.com",
+  "email": "Owner2@test.com",
   "password": "P@55word1"
 }
 
 ###
+
 PATCH {{KasiCornerKota_API_HostAddress}}/api/identity/user
 Content-Type: application/json
 Authorization : Bearer {{token}}
+
 {
-  "dateOf": "test@test.com",
-  "password": "P@55word1"
+  "dateOfBirth": "2013-05-04",
+  "Nationality": "Botswana"
 }
 
+###
+
+POST {{KasiCornerKota_API_HostAddress}}/api/identity/userRole
+Content-Type: application/json
+Authorization : Bearer {{token}}
+
+{
+  "UserEmail" : "Owner2@test.com",
+  "RoleName" : "Owner"
+}
+
+###
+
+@restaurantId=8
+GET {{KasiCornerKota_API_HostAddress}}/api/restaurants/{{restaurantId}}/dishes
+Authorization : Bearer {{token}}
+
+###
+
+@id=10
+DELETE {{KasiCornerKota_API_HostAddress}}/api/restaurants/{{id}}
+Authorization : Bearer {{token}}
 ###

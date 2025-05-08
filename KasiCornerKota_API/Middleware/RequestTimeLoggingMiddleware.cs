@@ -10,7 +10,7 @@ namespace KasiCornerKota_API.Middleware
             await request.Invoke(context);
             stopWatch.Stop();
 
-            if (stopWatch.ElapsedMilliseconds / 1000 > 4)
+            if (stopWatch.ElapsedMilliseconds / 3000 > 4)
             {
                 logger.LogInformation("Request [{Verb}] at {Path} took {Time} ms",
                     context.Request.Method,

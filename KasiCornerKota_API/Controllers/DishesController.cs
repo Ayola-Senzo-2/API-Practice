@@ -3,14 +3,16 @@ using KasiCornerKota_Application.Dishes.Commands.DeleteDish;
 using KasiCornerKota_Application.Dishes.Dtos;
 using KasiCornerKota_Application.Dishes.Queries.GetDishByIdForRestaurant;
 using KasiCornerKota_Application.Dishes.Queries.GetDishesForRestaurant;
-using KasiCornerKota_Domain.Entities;
+using KasiCornerKota_Infrastructure.Authorization;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KasiCornerKota_API.Controllers
 {
     [ApiController]
     [Route("api/restaurants/{restaurantId}/dishes")]
+    [Authorize]
     public class DishesController(IMediator mediator) : ControllerBase
     {
         [HttpPost]
@@ -22,6 +24,7 @@ namespace KasiCornerKota_API.Controllers
             return CreatedAtAction(nameof(GetByIdForRestaurant), new { restaurantId, dishId }, null);
         }
         [HttpGet]
+        [Authorize(Policy = PolicyNames.AtLeast20)]
         public async Task<ActionResult<IEnumerable<DishDto>>> GetAllForRestaurant([FromRoute] int restaurantId)
         {
             var dishes = await mediator.Send(new GetDishesForRestaurantQuery(restaurantId));

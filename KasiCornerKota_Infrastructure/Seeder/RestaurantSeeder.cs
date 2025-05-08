@@ -1,5 +1,7 @@
-﻿using KasiCornerKota_Domain.Entities;
+﻿using KasiCornerKota_Domain.Constants;
+using KasiCornerKota_Domain.Entities;
 using KasiCornerKota_Infrastructure.Persistence;
+using Microsoft.AspNetCore.Identity;
 
 namespace KasiCornerKota_Infrastructure.Seeder
 {
@@ -15,9 +17,34 @@ namespace KasiCornerKota_Infrastructure.Seeder
                     context.Restaurants.AddRange(restaurant);
                     await context.SaveChangesAsync();
                 }
+                if (!context.Roles.Any())
+                {
+                    var roles = GetRoles();
+                    context.Roles.AddRange(roles);
+                    await context.SaveChangesAsync();
+                }
             }
         }
 
+        private IEnumerable<IdentityRole> GetRoles()
+        {
+            List<IdentityRole> roles =
+                [
+                    new (UserRoles.User)
+                    {
+                        NormalizedName = UserRoles.User.ToUpper()
+                    },
+                    new (UserRoles.Owner)
+                    {
+                        NormalizedName = UserRoles.Owner.ToUpper()
+                    },
+                    new (UserRoles.Admin) 
+                    { 
+                        NormalizedName = UserRoles.Admin.ToUpper() 
+                    },
+                ];
+            return roles;
+        }
         private IEnumerable<Restaurant> GetRestaurants()
         {
             List<Restaurant> restaurants = [

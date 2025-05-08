@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace KasiCornerKota_Application.Users.Command
+namespace KasiCornerKota_Application.Users.Command.UpdateUserDetails
 {
     public class UpdateUserDetailsCommand : IRequest
     {

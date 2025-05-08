@@ -6,11 +6,13 @@ using KasiCornerKota_Domain.Repositories;
 using KasiCornerKota_Domain.Entities;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using KasiCornerKota_Domain.Constants;
+using KasiCornerKota_Domain.Interfaces;
 
 namespace KasiCornerKota_Application.Dishes.Commands.CreateDish
 {
     public class CreateDishCommandHandler(ILogger<CreateDishCommandHandler> logger,
-        IRestaurantsRepository restaurantsRepository,IDishesRepository dishesRepository, IMapper mapper) : IRequestHandler<CreateDishCommand, int>
+        IRestaurantsRepository restaurantsRepository,IDishesRepository dishesRepository, IMapper mapper, IRestaurantAuthorizationService restaurantAuthorization) : IRequestHandler<CreateDishCommand, int>
     {
         public async Task<int> Handle(CreateDishCommand request, CancellationToken cancellationToken)
         {
@@ -20,6 +22,11 @@ namespace KasiCornerKota_Application.Dishes.Commands.CreateDish
             if (restaurant == null) throw new NotFoundException(nameof(Restaurants), request.RestaurantId.ToString());
 
             var dish = mapper.Map<Dish>(request);
+
+            if (!restaurantAuthorization.Authorize(restaurant, ResourceOperation.Create))
+            {
+                throw new ForbidException("You are not authorized to create a dish for this restaurant.");
+            }
 
             return await dishesRepository.Create(dish);
 

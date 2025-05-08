@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using KasiCornerKota_Domain.Constants;
 using KasiCornerKota_Domain.Entities;
 using KasiCornerKota_Domain.Exceptions;
+using KasiCornerKota_Domain.Interfaces;
 using KasiCornerKota_Domain.Repositories;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -8,7 +10,7 @@ using Microsoft.Extensions.Logging;
 namespace KasiCornerKota_Application.Restaurants.Commands.UpdateRestaurant
 {
     public class UpdateRestaurantCommandHandler(ILogger<UpdateRestaurantCommandHandler> logger,
-        IRestaurantsRepository restaurantsRepository,IMapper mapper) : IRequestHandler<UpdateRestaurantCommand>
+        IRestaurantsRepository restaurantsRepository,IMapper mapper,IRestaurantAuthorizationService restaurantAuthorization) : IRequestHandler<UpdateRestaurantCommand>
     {
         public async Task Handle(UpdateRestaurantCommand request, CancellationToken cancellationToken)
         {
@@ -21,6 +23,11 @@ namespace KasiCornerKota_Application.Restaurants.Commands.UpdateRestaurant
             restaurant.Description = request.Description;
             restaurant.HasDelivery = request.HasDelivery;*/
             mapper.Map(request, restaurant);
+
+            if (!restaurantAuthorization.Authorize(restaurant, ResourceOperation.Update))
+            {
+                throw new ForbidException("You are not authorized to Update this restaurant.");
+            }
 
             await restaurantsRepository.SaveChanges();
         }

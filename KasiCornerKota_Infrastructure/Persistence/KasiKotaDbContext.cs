@@ -21,5 +21,10 @@ internal class KasiKotaDbContext(DbContextOptions<KasiKotaDbContext> options)
             .HasMany(r => r.dishes)
             .WithOne()
             .HasForeignKey(d => d.RestaurantId);
+
+        modelBuilder.Entity<User>()
+            .HasMany(o => o.OwnedRestaurants)
+            .WithOne(r => r.Owner)
+            .HasForeignKey(r => r.OwnerId);
     }
 }

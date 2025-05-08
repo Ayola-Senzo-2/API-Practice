@@ -1,11 +1,10 @@
-﻿using KasiCornerKota_Application.Users;
-using KasiCornerKota_Domain.Entities;
+﻿using KasiCornerKota_Domain.Entities;
 using KasiCornerKota_Domain.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 
-namespace KasiCornerKota_Application.Users.Command
+namespace KasiCornerKota_Application.Users.Command.UpdateUserDetails
 {
     public class UpdateUserDetailsCommandHandler(ILogger<UpdateUserDetailsCommandHandler> logger,
         IUserContext userContext,IUserStore<User> userStore) : IRequestHandler<UpdateUserDetailsCommand>

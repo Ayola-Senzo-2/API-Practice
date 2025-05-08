@@ -15,6 +15,11 @@ namespace KasiCornerKota_API.Middleware
 				context.Response.StatusCode = 404;
 				await context.Response.WriteAsync(notFound.Message);
 			}
+			catch(ForbidException forbid)
+			{
+				context.Response.StatusCode = 403;
+				await context.Response.WriteAsync(forbid.Message);
+			}
 			catch (Exception ex)
 			{
 

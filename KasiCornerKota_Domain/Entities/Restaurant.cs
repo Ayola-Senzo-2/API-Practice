@@ -11,8 +11,10 @@ namespace KasiCornerKota_Domain.Entities
 
         public string? PhoneNumber { get; set; }
         public string? ContactEmail { get; set; }
-
         public Address? Address { get; set; }
         public List<Dish>  dishes{ get; set; } = new List<Dish>();
+
+        public User Owner { get; set; } = default!;
+        public string OwnerId { get; set; } = default!;
     }
 }
