@@ -16,10 +16,11 @@ namespace KasiCornerKota_API.Controllers;
 public class RestaurantsController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
-    [Authorize(Policy = PolicyNames.AtLeast2)]
-    public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll()
+    [AllowAnonymous]
+    /*[Authorize(Policy = PolicyNames.AtLeast2)]*/
+    public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAll([FromQuery] GetAllRestaurantsQuery query)
     {
-        var restaurants = await mediator.Send(new GetAllRestaurantsQuery());
+        var restaurants = await mediator.Send(query);
         return Ok(restaurants);
     }
 
