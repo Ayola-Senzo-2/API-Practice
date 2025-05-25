@@ -34,7 +34,7 @@ namespace KasiCornerKota_Application.Users
                 ? (DateOnly?)null
                 : DateOnly.ParseExact(dateOfBirthString,"yyyy-MM-dd");
 
-            return new CurrentUser(userId, email, role, dateOfBirthString, dateOfBirth);
+            return new CurrentUser(userId, email, role, Nationality, dateOfBirth);
         }
     }
 }

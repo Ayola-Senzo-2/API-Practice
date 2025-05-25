@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KasiCornerKota_Application\KasiCornerKota_Application.csproj" />
-    <ProjectReference Include="..\KasiCornerKota_Infrastructure\KasiCornerKota_Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\KasiCornerKota_Application\KasiCornerKota_Application.csproj" />
+    <ProjectReference Include="..\..\src\KasiCornerKota_Infrastructure\KasiCornerKota_Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
