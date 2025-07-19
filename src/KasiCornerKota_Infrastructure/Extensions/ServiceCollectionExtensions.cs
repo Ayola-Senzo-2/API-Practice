@@ -3,10 +3,12 @@ using KasiCornerKota_Domain.Interfaces;
 using KasiCornerKota_Domain.Repositories;
 using KasiCornerKota_Infrastructure.Authorization;
 using KasiCornerKota_Infrastructure.Authorization.Requirements;
+using KasiCornerKota_Infrastructure.Configuration;
 using KasiCornerKota_Infrastructure.Persistence;
 using KasiCornerKota_Infrastructure.Repositories;
 using KasiCornerKota_Infrastructure.Seeder;
 using KasiCornerKota_Infrastructure.Services;
+using KasiCornerKota_Infrastructure.Storage;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +24,7 @@ namespace KasiCornerKota_Infrastructure.Extensions
             var connectionString = configuration.GetConnectionString("KasiCornerKota");
             services.AddDbContext<KasiKotaDbContext>(options => options.UseSqlServer(connectionString)
                 .EnableSensitiveDataLogging());
-
+                
             services.AddIdentityApiEndpoints<User>()
                 .AddRoles<IdentityRole>()
                 .AddClaimsPrincipalFactory<RestaurantsUserClaimsPrincipalFactory>()
@@ -40,6 +42,8 @@ namespace KasiCornerKota_Infrastructure.Extensions
             services.AddScoped<IRestaurantAuthorizationService, RestaurantAuthorizationService>();
             services.AddScoped<IAuthorizationHandler, MinimumRestaurantRequirementHandler>();
 
+            services.Configure<BlobStorageSettings>(configuration.GetSection("BlobStorage"));
+            services.AddScoped<IBlobStorageService, BlobStorageService>();
         }
     }
 }

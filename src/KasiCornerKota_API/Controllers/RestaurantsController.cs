@@ -1,6 +1,7 @@
 ﻿using KasiCornerKota_Application.Restaurants.Commands.CreateRestaurant;
 using KasiCornerKota_Application.Restaurants.Commands.DeleteRestaurant;
 using KasiCornerKota_Application.Restaurants.Commands.UpdateRestaurant;
+using KasiCornerKota_Application.Restaurants.Commands.UploadKasiRestaurantLogo;
 using KasiCornerKota_Application.Restaurants.Dtos;
 using KasiCornerKota_Application.Restaurants.Queries.GetAllRestaurants;
 using KasiCornerKota_Application.Restaurants.Queries.GetRestaurantById;
@@ -8,6 +9,7 @@ using KasiCornerKota_Domain.Constants;
 using KasiCornerKota_Infrastructure.Authorization;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KasiCornerKota_API.Controllers;
@@ -25,7 +27,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [Authorize(Policy = PolicyNames.HasNationality)]
+    /*[Authorize(Policy = PolicyNames.HasNationality)]*/
     public async Task<ActionResult<RestaurantDto?>> GetById(int id)
     {
         var restaurant = await mediator.Send(new GetRestaurantByIdQuery(id));
@@ -59,5 +61,19 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
 
         int id = await mediator.Send(command);
         return CreatedAtAction(nameof(GetById),new { id}, null);
+    }
+    [HttpPost("{id}/logo")]
+    public async Task<IActionResult> UploadLogo([FromRoute]int id, IFormFile file)
+    {
+        using var stream = file.OpenReadStream();
+
+        var command = new UploadKasiRestaurantLogoCommand()
+        {
+            RestaurantId = id,
+            FileName = $"{id}-{file.FileName}",
+            File = stream
+        };
+        await mediator.Send(command);
+        return NoContent();
     }
 }

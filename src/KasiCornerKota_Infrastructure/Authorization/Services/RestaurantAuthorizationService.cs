@@ -14,7 +14,7 @@ namespace KasiCornerKota_Infrastructure.Services
             var user = userContext.GetCurrentUser();
 
             logger.LogInformation("Authorizing user {UserEmail}, to {Operation} for restaurant {RestaurantName}",
-                user.Email,
+                user!.Email,
                 operation,
                 restaurant.Name);
 

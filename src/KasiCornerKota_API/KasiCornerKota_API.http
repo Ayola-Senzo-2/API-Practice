@@ -1,7 +1,7 @@
 @host = https://localhost
 @port = 7272
 @KasiCornerKota_API_HostAddress = https://localhost:7272
-@token = CfDJ8ODwGfDpVsZFrPxfC2bFSY2B-6vGY_J3yqwHojDNXpWv9QJLv4aC6ZL94y6_wyeuA2jOqETqCAhr7KuUm1vg5l4d6rpej_yJQObVlTciju8PJqASbacLxcGn7FL3fdyQcID_TAE_TIZ35sQ0TNc5s3ogusSdU6mBWsHopFt24Xc0902HBp4TGrxJVOTwFWvyvTiPe-zm1VYjr16ZtwAuwLhbtJwcQAI3Ep2yk_fhhUWzDNNMpRqAaCyXBxAj8sL8Z0sdldTdsbCCbTzzl-UcvI2yskVXR3tU1F-6BySwFyXTJQ69GjXeQcenBXT6D1uOrUdfoKpE6qXgz8KqPEWUX6QOBqLPgsFr79B0xEEnRyu8L_UCLA2jD6dsfvSnVAIzPVX5hv6BfJGi5sXmI_sG7WEGh0ykIlXUaD1ogEwRYJXkJ9l-4c7JnaBHTH8DDKVkS-sq-6yDt4BqSIrYAy79o5zfCOh66EFWKs3PcK8Xbpgt7OLDIBM4IC-hPBmrHLSIqXGtLfHP8R5TNndhpd1whmdugw_eCva28rvT9syO7LDnGloEC6fPpXQCDjvmZW-V4z9qK_Gt9ER5HBWWnEBgDC3zm3Bh6CUPE70TjoB9wN6j_fhTBdwykUmXHq0pNVWcpwAJuZXt_5pcU3DXztN5k2OsexSTLJl-5XGHAu0bVWgvfYPqW7NcUctT6gEijQyAkEXUoQ1tN0ZT2qIzWBXS8Qa-vDkK-VbTHNlXUMVTA0WNey4FPiG424IqXFDarF03z5rFJgthXGs0-M68XYzaCYPPO47V_t7FQybsNgjsVL5VzEKZnI8UWau1K_uGQ2ma3eIO9D1PD-Jhk6guBoPcgcD-V-PMEBKsvpfN1Z_nDUOx8ec7mqRFw73C3Yv5gFOpF9RWxgz87x1fjD1vtOLTXXTvXOZziiZZrjysWopyy09C6m9SVqY1dpeJdt-826MU2LSp7gywbGLsygmnFNmG2RK6taFivk3puGUF2zhv9n-c
+@token = CfDJ8ODwGfDpVsZFrPxfC2bFSY3Y3d9XKkGz_Uj6h9cY8-2Zk5Zm5NMcYiOpgLRsLiiPXYJZXAPogfKACFjhsjSSo6KiDS4g1iow7JzSa8jnv9oz-WR4OcAkHWlboN1SwABxAv9Tq2YhCJqLDfzpw-ZYpHb5XkXA-xFNuNRwZ7oJaWFuBJJPY5W_-RfZ-10Lo8Y_aRJX1RCpW-Xk29LmxhE_6zFKqqd9YRjHW8EQr2xeajfIorQjOcV1E_VcycFVLALgYr8O55kIz2xzV_ALlVdTPOnK2IdE1Iy6y1i3rZUXs9loUNIbtS9vVE62ge-6pwqL4nqzbQiwfqtC7bOjJUvdwPZp4aYEgdvGmk5CeLDMAzF3jTq4PdHs8b_9Od5GuR9H9B50-6p41btfHmLq2C9IU71SPS42LWMT1G3xLaYZ6u7TYEFKlHV9c8C1xuUO3uyesdIySov3aS3ZMPx9bjBNrjtoqcLiCrEmB4p5my99i5Y52AGLf-QcnZ5GpjuWHGLeqSxA-xjhkoBivZymC_Zt9UOruneY_WghY9deKQJYUDPGCr3ODZA7X9HGfjR3p58Ey6xF2v2j-1SQnKuQKpJWy-m95o6tbR_YZG5sUGsG-JvTb4kweSiNjDFmnRCH4N97lGBfTMW-8z9sWmXlNqNUn24LKjAg1sElESNaN4zzccPpakQd--fiH13jGNboKf4ZpJq-ryxq4Ew9Jt7GRwtQcw4Rj5iUWHJF3Kf7RMbLsclE-woLhVXF5knM3Lg86jqNzrdNE6oLlofAc1OZGWR27cvsMVDDpaOoOaK5qdETcona
 
 GET {{KasiCornerKota_API_HostAddress}}/api/restaurants?searchPhrase=&pageSize=10&pageCount=2&sortBy=Name&sortDirection=Descending
 Authorization : Bearer {{token}}
@@ -70,7 +70,7 @@ POST {{KasiCornerKota_API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 {
-  "email": "test@test.com",
+   "email": "Owner2@test.com",
   "password": "P@55word1"
 }
 
@@ -107,4 +107,14 @@ Authorization : Bearer {{token}}
 @id=9994024
 DELETE {{KasiCornerKota_API_HostAddress}}/api/restaurants/{{id}}
 Authorization : Bearer {{token}}
+###
+
+POST {{KasiCornerKota_API_HostAddress}}/api/restaurants/{id}/logo
+Authorization : Bearer {{token}}
+Content-Type: application/json
+
+{
+  "C:\Users\User\Downloads\shisa-nyama-Logo.jpg"
+}
+
 ###
